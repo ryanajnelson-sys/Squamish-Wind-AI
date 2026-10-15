@@ -27,10 +27,10 @@ col1, col2, col3 = st.columns(3)
 with col1:
 wind_speed = None
     
-    st.metric("Wind Speed", "Coming soon")
+    st.metric("Wind Speed", f"{wind_speed} knots" if wind_speed is not None else "Coming soon")
 
 with col2:
-    st.metric("Wind Speed", f"{wind_speed} knots" if wind_speed is not None else "Coming soon")
+    st.metric("Best Riding Window", "Coming soon")
 
 with col3:
     st.metric("Forecast Confidence", "Coming soon")
