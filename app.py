@@ -25,7 +25,7 @@ st.header("Today's Wind Forecast")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-wind_speed = None
+    wind_speed = None
     
     st.metric("Wind Speed", f"{wind_speed} knots" if wind_speed is not None else "Coming soon")
 
