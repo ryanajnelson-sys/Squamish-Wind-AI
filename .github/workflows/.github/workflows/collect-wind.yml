@@ -1,0 +1,38 @@
+name: Collect Pam Rocks Wind Data
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Collect wind data
+        run: python collect_wind_data.py
+
+      - name: Save wind history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pam_rocks_hourly.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Pam Rocks wind history"
+            git push
+          fi
