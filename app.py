@@ -1,4 +1,5 @@
 import streamlit as st
+import request
 from datetime import datetime
 
 st.set_page_config(
@@ -24,6 +25,8 @@ st.header("Today's Wind Forecast")
 col1, col2, col3 = st.columns(3)
 
 with col1:
+wind_speed = None
+    
     st.metric("Wind Speed", "Coming soon")
 
 with col2:
