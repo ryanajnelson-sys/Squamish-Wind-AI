@@ -30,7 +30,6 @@ jobs:
       - name: Collect wind observations
         run: |
           python collect_wind.py
-          python collect_airport.py
 
       - name: Save collected data
         run: |
